@@ -1,0 +1,391 @@
+[
+    {
+        "id": "d7053dc0f7ee2375",
+        "type": "tab",
+        "label": "FAVORIOT MQTT NODERED",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e9cebaf7ec15d4c6",
+        "type": "mqtt in",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "topic": "HIBISCUS_SENSE/DATA",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "1fb61b305b74c3b5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "61af898365eafaba"
+            ]
+        ]
+    },
+    {
+        "id": "cce27391da0b6752",
+        "type": "debug",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "61af898365eafaba",
+        "type": "json",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "4cd261806cc05392",
+                "19071529338a12cb",
+                "988a87753b9d8c20"
+            ]
+        ]
+    },
+    {
+        "id": "4cd261806cc05392",
+        "type": "function",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "func": "msg.payload = msg.payload.humidity; //put only the VALUE in payload\nmsg.topic = \"humidity\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 220,
+        "wires": [
+            [
+                "9a18028770bdcf4c",
+                "54e06b1624159df0",
+                "cce27391da0b6752"
+            ]
+        ]
+    },
+    {
+        "id": "9a18028770bdcf4c",
+        "type": "ui_gauge",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "group": "0abd1f901623604f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "50",
+        "seg2": "70",
+        "className": "",
+        "x": 700,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "54e06b1624159df0",
+        "type": "ui_chart",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "group": "0abd1f901623604f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "19071529338a12cb",
+        "type": "function",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "func": "msg.payload = msg.payload.temperature; //put only the VALUE in payload\nmsg.topic = \"temperature\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 360,
+        "wires": [
+            [
+                "541ec6216580c187",
+                "8f2f625c5b038c65",
+                "e419cb04b052ab6f"
+            ]
+        ]
+    },
+    {
+        "id": "e419cb04b052ab6f",
+        "type": "debug",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "541ec6216580c187",
+        "type": "ui_gauge",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "group": "61285987.c20328",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 710,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8f2f625c5b038c65",
+        "type": "ui_chart",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "group": "61285987.c20328",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 710,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "988a87753b9d8c20",
+        "type": "function",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "func": "msg.headers = {};\nmsg.headers['content-type'] = 'application/json';\nmsg.headers['accesstoken'] = 'YOUR DEVICE ACCESS TOKEN';\n\nlet data = msg.payload;\n\nmsg.payload = {\n\t\"device_developer_id\": 'YOUR DEVICE DEVELOPER ID',\n\t'data' : data\n\t};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 100,
+        "wires": [
+            [
+                "346b0d3e23c56110"
+            ]
+        ]
+    },
+    {
+        "id": "459e21f94734802d",
+        "type": "http response",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 960,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "346b0d3e23c56110",
+        "type": "http request",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://apiv2.favoriot.com/v2/streams",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "credentials": {},
+        "x": 710,
+        "y": 100,
+        "wires": [
+            [
+                "459e21f94734802d",
+                "bfaff0b73eb4b61e"
+            ]
+        ]
+    },
+    {
+        "id": "bfaff0b73eb4b61e",
+        "type": "debug",
+        "z": "d7053dc0f7ee2375",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1fb61b305b74c3b5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "0abd1f901623604f",
+        "type": "ui_group",
+        "name": "Humidity Stat",
+        "tab": "e7c46d5e.a1283",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "61285987.c20328",
+        "type": "ui_group",
+        "name": "Temperature Stat",
+        "tab": "e7c46d5e.a1283",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e7c46d5e.a1283",
+        "type": "ui_tab",
+        "name": "NodeRED Playground Dashboard",
+        "icon": "",
+        "disabled": false,
+        "hidden": false
+    }
+]
